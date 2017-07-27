@@ -98,6 +98,10 @@ p {
   margin-left: 1em;
 }
 
+pre {
+  margin-left: 1rem;
+}
+
 input[type=email] {
   font-size: 1em;
   padding: 5px 6px;
@@ -158,6 +162,26 @@ input[type=email] {
   </ul>
 
   <script id="hb-cu-492563">window.onload = function() {hellobar("contentUpgrades").show(492563);};</script>
+</section>
+
+<section>
+  <ul>
+    <li><strong>EXTERNAL TRACKING (Google Tag Manager)</strong></li>
+  </ul>
+
+  <pre class="events"></pre>
+
+  <script>
+  const events = document.querySelector('pre.events');
+
+  // Google Tag Manager
+  var dataLayer = {
+    push: (externalEvent) => {
+      const { event, category, action, label } = externalEvent;
+      events.innerHTML += `Google Tag Manager event: '${ event }', category: '${ category }', action: '${ action }', label: '${ label }'\n`;
+    }
+  }
+  </script>
 </section>
 
 </body>

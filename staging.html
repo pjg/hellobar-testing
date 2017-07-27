@@ -98,6 +98,10 @@ p {
   margin-left: 1em;
 }
 
+pre {
+  margin-left: 1rem;
+}
+
 input[type=email] {
   font-size: 1em;
   padding: 5px 6px;
@@ -142,6 +146,26 @@ input[type=email] {
     <li><strong>AUTOFILLS</strong>: <span class="script">input type="email" class="email": <input type="email" class="email" /></span></li>
     <li><a href="https://analytics.google.com/analytics/web/?authuser=1#realtime/rt-event/a1224235w141726522p146255924/">Google Analytics EVENTS</a></li>
   </ul>
+</section>
+
+<section>
+  <ul>
+    <li><strong>EXTERNAL TRACKING (Google Tag Manager)</strong></li>
+  </ul>
+
+  <pre class="events"></pre>
+
+  <script>
+  const events = document.querySelector('pre.events');
+
+  // Google Tag Manager
+  var dataLayer = {
+    push: (externalEvent) => {
+      const { event, category, action, label } = externalEvent;
+      events.innerHTML += `Google Tag Manager event: '${ event }', category: '${ category }', action: '${ action }', label: '${ label }'\n`;
+    }
+  }
+  </script>
 </section>
 
 </body>
