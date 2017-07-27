@@ -144,13 +144,13 @@ input[type=email] {
 <section>
   <ul>
     <li><strong>AUTOFILLS</strong>: <span class="script">input type="email" class="email": <input type="email" class="email" /></span></li>
-    <li><a href="https://analytics.google.com/analytics/web/?authuser=1#realtime/rt-event/a1224235w141726522p146255924/">Google Analytics EVENTS</a></li>
   </ul>
 </section>
 
 <section>
   <ul>
-    <li><strong>EXTERNAL TRACKING (Google Tag Manager)</strong></li>
+    <li><strong><a href="https://analytics.google.com/analytics/web/?authuser=1#realtime/rt-event/a1224235w141726522p146255924/">EXTERNAL TRACKING (Google Analytics)</a></strong></li>
+    <li><strong>EXTERNAL TRACKING (Google Tag Manager; Google Analytics (Legacy))</strong></li>
   </ul>
 
   <pre class="events"></pre>
@@ -162,7 +162,15 @@ input[type=email] {
   var dataLayer = {
     push: (externalEvent) => {
       const { event, category, action, label } = externalEvent;
-      events.innerHTML += `Google Tag Manager event: '${ event }', category: '${ category }', action: '${ action }', label: '${ label }'\n`;
+      events.innerHTML += `[Google Tag Manager] event: '${ event }', category: '${ category }', action: '${ action }', label: '${ label }'\n`;
+    }
+  }
+
+  // Google Analytics (Legacy)
+  var _gaq =  {
+    push: (externalEvent) => {
+      const [event, category, action, label] = externalEvent;
+      events.innerHTML += `[Google Analytics (Legacy)] event: '${ event }', category: '${ category }', action: '${ action }', label: '${ label }'\n`;
     }
   }
   </script>
